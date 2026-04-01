@@ -11,7 +11,6 @@
 }
 
 
-
 .container-color {
   position: sticky;
   top: 0;
@@ -20,26 +19,223 @@
 
 }
 
-.container {
-  margin-bottom: 20px;
+
+.headers {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 11vh;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    /* z-index: 1000; */
+
+}
+.head-box ul {
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
 }
 
-
-ul li a {
-  text-decoration: none;
-  color: black;
-  font-size: 13px;
+.head-box ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+     font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
-i {
-  color: black;
-  font-size: 13px;
-}
-
-.container ul li a:hover {
+.head-box ul li a:hover {
   color: #FAB700;
-  ;
 }
+
+
+
+/* pages */
+
+.container ul li {
+  position: relative;
+}
+
+.container ul li ul.submenu,
+ .container ul.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0;
+  background-color: white;
+    border: 1px solid white;
+  list-style: none;
+  min-width: 180px;
+  margin-top: 35px;
+
+  z-index: 100;
+  display: block;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+
+}
+
+.container ul li:hover ul.submenu,
+.container ul li:hover ul.dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.container ul li ul.dropdown-menu, 
+.container ul li ul.submenu{
+  border: none;
+  border-radius: 0;
+}
+.container ul li ul.dropdown-menu li a:hover,
+.container ul li ul.submenu li a:hover {
+  background-color: #FAB700;
+  color: white;
+}
+
+.container ul li ul.dropdown-menu li a,
+ul.submenu li a {
+  display: block;
+  padding: 13px 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.container {
+  margin-bottom: 60px;
+}
+
+
+.about-home li a{
+  text-decoration: none;
+}
+
+
+
+
+/* Mobil görünüş: 992px-dən kiçik ekranlar */
+@media (max-width: 992px) {
+
+  /* Burger icon göstər */
+  .burger {
+    display: block;
+    cursor: pointer;
+    
+  }
+
+.head-box ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  max-height: 0;      
+  overflow: hidden;      
+  transition: max-height 0.5s ease;
+  z-index: 999;
+  padding: 0 1.5rem;   
+}
+  .head-box ul li {
+    width: 100%;
+    padding: 7px 20px;
+    
+    
+  }
+  
+  .head-box ul li a {
+    display: block;
+        font-size: 12px;
+  }
+
+  /* Açıq menyu */
+  .head-box ul.active {
+    max-height: 80vh; /* lazım olan qədər açılır */
+    overflow-y: auto; /* scroll lazım olsa */
+  }
+.submenu li a ,
+.dropdown-menu li a{
+  background-color: white;
+}
+  
+  
+        .container ul li ul.submenu,
+  .container ul li ul.dropdown-menu {
+    display: block;
+    position: relative;   
+    top: 0;
+    left: 0;
+    margin: 0;
+color: black;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+     visibility: visible;
+  }
+  .container ul li:focus-within ul.submenu,
+  .container ul li:focus-within ul.dropdown-menu {
+    max-height: 300px;
+  }
+  .burger {
+        display: block;
+        /* göstər */
+        cursor: pointer;
+        position: relative;
+        left: 26%;
+    
+    }
+    .burger:hover {
+          transition: 0.5s;}
+
+    .burger span {
+        display: block;
+        width: 28px;
+        height: 3.2px;
+        margin: 5px 0;
+        background-color:#FAB700;
+        position: relative;
+        right: 1%;
+    }
+
+
+    .start-head {
+
+        left: 10%;
+    }
+}
+@media (max-width: 400px) {
+
+  /* Baş menyu mobil */
+  .head-box ul {
+    
+          
+        padding: 1.5rem 1.5rem 0 2rem;
+                display: none; 
+    
+  }
+  
+    .burger span {
+        display: block;
+        width: 28px;
+        height: 3.2px;
+        margin: 5px 0;
+        background-color:#FAB700;
+        position: relative;
+        right: 15%;
+    }
+
+}
+
 
 .dream-img {
   background-image: url(./img/banner.jpg);
@@ -54,70 +250,6 @@ i {
 }
 
 
-.container ul li {
-  position: relative;
-}
-
-.container ul li ul.blog-menu,
-ul.pages-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  padding: 0;
-  background-color: white;
-  list-style: none;
-  min-width: 180px;
-  margin-top: 35px;
-
-  z-index: 100;
-  display: block;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-
-}
-
-.container ul li:hover ul.blog-menu,
-.container ul li:hover ul.pages-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-
-
-
-.container ul li ul.pages-menu {
-  border: none;
-  border-radius: 0;
-}
-
-
-.container ul li ul.pages-menu li a:hover,
-.container ul li ul.blog-menu li a:hover {
-  background-color: #FAB700;
-  color: white;
-}
-
-
-.container ul li ul.pages-menu li a,
-ul.blog-menu li a {
-  display: block;
-  padding: 13px 20px;
-  color: black;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-
-
-
-
-.container ul li a:hover {
-  color: #FAB700;
-}
-
 @media screen and (max-width: 992px) {
   .dream-img {
 background-position: center 4rem;
@@ -127,7 +259,7 @@ background-position: center 4rem;
 
 
   .container {
-    /* position: relative; */
+    position: relative; 
     display: flex;
     justify-content: space-between;
 
@@ -172,38 +304,10 @@ background-position: center 4rem;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
-
+  
   }
 
-  /* Hamburger icon - narıncı */
-  .container::after {
-    content: "";
-    position: absolute;
-    top: 32px;
-    right: 3%;
-    width: 26px;
-    height: 3px;
-    background: #FAB700;
-    box-shadow: 0 8px 0 #FAB700, 0 16px 0 #FAB700;
-    cursor: pointer;
-    z-index: 2;
-    display: block;
-    margin-right: 50px;
-  }
 
-  /* əsas menyu linkləri */
-  .container>div>ul>li>a {
-    padding: 10px 15px;
-    /* AZALTDIM */
-    line-height: 1.2;
-  }
-
-  /* alt menyu linkləri */
-  .container ul li ul.pages-menu li a,
-  .container ul li ul.blog-menu li a {
-    padding: 8px 30px;
-   
-  }
 
   .container>div>ul>li {
     margin: 0;
@@ -243,9 +347,6 @@ margin-top: 30px;
 
 
 
-
-
-
 .surname {
   height: 100%;
   display: flex;
@@ -266,8 +367,9 @@ margin-top: 30px;
 .about-home {
   list-style: none;      /* nöqtələri götürür */
   display: flex;         /* yan-yana edir */
-  gap: 1.5rem;     
+  gap: 1.2rem;     
    font-family: "Roboto", sans-serif;
+
 }
 .about-home li a{
     font-size: 14px;
@@ -298,22 +400,6 @@ h1 {
 @media screen and (max-width: 768px) {
     
 
-
-  .container::after {
-    content: "";
-    position: absolute;
-    top: 32px;
-    right: 1%;
-    width: 26px;
-    height: 3px;
-    background: #FAB700;
-    box-shadow: 0 8px 0 #FAB700, 0 16px 0 #FAB700;
-    cursor: pointer;
-    z-index: 2;
-    display: block;
-
-  }
-
   .font {
     font-size: 36px;
     line-height: 0.5;
@@ -339,16 +425,6 @@ h1 {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* 
 map */
 
@@ -368,6 +444,14 @@ map */
     transition: filter 0.3s ease; /* s7roll zamanı yumşaq keçid */
 }
 
+ @media screen and ( max-width: 768px ){
+.map iframe{
+    width: 85%;
+    height: 56vh;
+
+}
+
+ }
 
 /* mail */
 
@@ -407,6 +491,10 @@ color: #777777;
 font-family: "Roboto", sans-serif;
 font-size: 14px;
 }
+.info_item i{
+padding-left: 10px;
+}
+
 
 .text-right button{
     background-color: #FAB700;
@@ -418,7 +506,7 @@ font-size: 14px;
 }
 
  .container2{
-  padding: 80px;
+  padding: 0 80px 30px 80px;
 }
 textarea {
   resize: none;
@@ -440,32 +528,24 @@ padding-left: 10px;
     border-radius: 0 !important;
 }
 
+ @media screen and ( max-width: 992px ){
+
+  .container2{
+  padding: 0;
+
+}
+
+ }
  @media screen and ( max-width: 768px ){
   .container2{
   padding: 0;
+  max-width: 85% ;
 }
  }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* contact */
-
-
 
 
 .end-color {
@@ -473,7 +553,7 @@ padding-left: 10px;
     color: white;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 padding: 70px;
   gap: 20px;
  
@@ -482,12 +562,12 @@ padding: 70px;
 .end-color > div:nth-child(1),
 .end-color > div:nth-child(2),
 .end-color > div:nth-child(3) {
-  flex: 0 0 30%;
+  flex: 0 0 25%;
 }
 
 .end-color > div:nth-child(4),
 .end-color > div:nth-child(5) {
-  flex: 0 0 45%;
+  flex: 0 0 40%;
 }
 
 .end-text, .end-text i{
@@ -592,18 +672,18 @@ align-items: center;
  
   .end-color > div:nth-child(1),
   .end-color > div:nth-child(2) {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
   }
 
 
   .end-color > div:nth-child(3) {
-    flex: 0 0 100%; 
+    flex: 0 0 88%; 
   }
 
 
   .end-color > div:nth-child(4),
   .end-color > div:nth-child(5) {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
   }
 
 }
@@ -620,7 +700,11 @@ align-items: center;
     .end-color > div:nth-child(3) {
   margin-bottom: 50px;
   }
+.end-color {
 
+
+padding: 70px 40px;
+}
 
 }
 
@@ -631,7 +715,7 @@ align-items: center;
    .end-color > div:nth-child(3)
    .end-color > div:nth-child(4),
   .end-color > div:nth-child(5) {
-    flex: 0 0 100%;
+    flex: 0 0 85%;
     
   }
 
@@ -639,3 +723,7 @@ align-items: center;
     padding: 15px;
    }
 } 
+.head-box ul li a.active {
+  color: #FAB700; 
+  font-weight: bold;
+}
